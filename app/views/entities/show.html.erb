@@ -20,7 +20,7 @@
 				<tr>
 					<td><%= parent.name %></td>
 		      <td><%= parent.description %></td>
-		      <td><%= parent.ownerships_as_parent.first.ownership_percentage %></td>
+		      <!-- <td><%= parent.ownerships_as_parent.first.ownership_percentage %></td> -->
 		      <td><%= link_to 'Show', parent %></td>
 		      <td><%= link_to 'Edit', edit_entity_path(parent) %></td>
 		    </tr>
@@ -39,7 +39,7 @@
 				<tr>
 					<td><%= sub.name %></td>
 		      <td><%= sub.description %></td>
-		      <td><%= sub.ownerships_as_subsidiary.first.ownership_percentage %></td>
+		      <!-- <td><%= sub.ownerships_as_subsidiary.first.ownership_percentage %></td> -->
 		      <td><%= link_to 'Show', sub %></td>
 		      <td><%= link_to 'Edit', edit_entity_path(sub) %></td>
 		    </tr>
