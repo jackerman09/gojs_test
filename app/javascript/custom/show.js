@@ -36,24 +36,29 @@ $(document).ready(function(){
   	  );
 
   var model = $$(go.GraphLinksModel);
-  model.nodeDataArray =
-  [
-    { key: "A",	name: "Four Star",	source: "", isGroup: true},
-    { key: "1",	name: "BJGH",  			source: "" },
-    { key: "2", name: "EBJ Sagamore HoldCo",  			source: "" },
-    { key: "4", name: "Throop Kings", 				source: "", group: "A" },
-    { key: "5", name: "141 Madison",  			source: "", group: "A" },
-    { key: "6", name: "EBJ Sagamore",				source: "" },
-    { key: "7", name: "EBJ Properties",				source: "" }
-  ];
 
-  model.linkDataArray =
-  [
-    { from: "1", to: "2", ownership: "5%" },
-    { from: "7", to: "2", ownership: "95%" },
-    { from: "1", to: "A", ownership: "50%" },
-    { from: "2", to: "6", ownership: "50%" },
-  ];
+  var family_tree = $('#entity-info').data('family')
+  console.log(family_tree)
+  model.nodeDataArray = family_tree
+
+  // model.nodeDataArray =
+  // [
+  //   { key: "A",	name: "Four Star",	source: "", isGroup: true},
+  //   { key: "1",	name: "BJGH",  			source: "" },
+  //   { key: "2", name: "EBJ Sagamore HoldCo",  			source: "" },
+  //   { key: "4", name: "Throop Kings", 				source: "", group: "A" },
+  //   { key: "5", name: "141 Madison",  			source: "", group: "A" },
+  //   { key: "6", name: "EBJ Sagamore",				source: "" },
+  //   { key: "7", name: "EBJ Properties",				source: "" }
+  // ];
+
+  // model.linkDataArray =
+  // [
+  //   { from: "1", to: "2", ownership: "5%" },
+  //   { from: "7", to: "2", ownership: "95%" },
+  //   { from: "1", to: "A", ownership: "50%" },
+  //   { from: "2", to: "6", ownership: "50%" },
+  // ];
 
   myDiagram.model = model;
 })

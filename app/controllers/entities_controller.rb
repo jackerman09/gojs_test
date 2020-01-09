@@ -10,6 +10,14 @@ class EntitiesController < ApplicationController
   # GET /entities/1
   # GET /entities/1.json
   def show
+    @subs = @entity.subsidiaries
+    @family_tree = @entity.family_tree
+  end
+
+  def relative_data
+    # entity = 
+    # entity_data = entity.subsidiaries.map { |diary| { key: diary.id, name: diary.name } }
+    # render json: entity_data
   end
 
   # GET /entities/new
