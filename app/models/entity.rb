@@ -6,6 +6,6 @@ class Entity < ApplicationRecord
   has_many :parents, :through => :ownerships_as_subsidiary
 
   def family_tree
-    self.subsidiaries.map { |diary| { key: diary.id, name: diary.name } }
+    self.subsidiaries.map { |diary| { key: diary.id, name: diary.name } }.to_json
   end
 end
