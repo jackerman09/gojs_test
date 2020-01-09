@@ -6,11 +6,17 @@ class Entity < ApplicationRecord
   has_many :parents, :through => :ownerships_as_subsidiary
 
   def family_tree
-    self.subsidiaries.map { |diary| { key: diary.id, name: diary.name } }.to_json
+    subsidiaries = self.subsidiaries.where.not(id: self.id)
+    parents = self.parents #includes self
+    family = subsidiaries + parents
+    family.map { |diary| { key: diary.id, name: diary.name } }.to_json
   end
 
   def relationships
-    self.ownerships_as_parent.where.not(subsidiary_id: self.id).map { 
+    subsidiary_relationships = self.ownerships_as_parent.where.not(subsidiary_id: self.id)
+    parent_relationships = self.ownerships_as_subsidiary.where.not(parent_id: self.id)
+    relationships = subsidiary_relationships + parent_relationships
+    relationships.map { 
       |diary| { from: diary.parent_id, to: diary.subsidiary_id, ownership: diary.ownership_percentage }
     }.to_json
   end
