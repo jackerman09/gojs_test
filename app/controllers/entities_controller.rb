@@ -12,6 +12,7 @@ class EntitiesController < ApplicationController
   def show
     @subs = @entity.subsidiaries
     @family_tree = @entity.family_tree
+    @relationships = @entity.relationships
   end
 
   # GET /entities/new

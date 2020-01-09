@@ -1,8 +1,8 @@
 console.log('in show.js')
 $(document).ready(function(){
   console.log('document is ready')
-  var $$ = go.GraphObject.make;
-  var myDiagram =
+  $$ = go.GraphObject.make;
+  myDiagram =
     $$(go.Diagram, "myDiagramDiv",
       {
         "undoManager.isEnabled": true, // enable Ctrl-Z to undo and Ctrl-Y to redo
@@ -35,11 +35,14 @@ $(document).ready(function(){
         )
   	  );
 
-  var model = $$(go.GraphLinksModel);
+  model = $$(go.GraphLinksModel);
 
-  var family_tree = $('#entity-info').data('family')
+  family_tree = $('#entity-info').data('family')
+  relationships = $('#entity-info').data('relationships')
   console.log(family_tree)
+  console.log(relationships)
   model.nodeDataArray = family_tree
+  model.linkDataArray = relationships
 
   // model.nodeDataArray =
   // [

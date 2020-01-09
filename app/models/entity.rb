@@ -8,4 +8,10 @@ class Entity < ApplicationRecord
   def family_tree
     self.subsidiaries.map { |diary| { key: diary.id, name: diary.name } }.to_json
   end
+
+  def relationships
+    self.ownerships_as_parent.where.not(subsidiary_id: self.id).map { 
+      |diary| { from: diary.parent_id, to: diary.subsidiary_id, ownership: diary.ownership_percentage }
+    }.to_json
+  end
 end

@@ -2,7 +2,11 @@
 
 <p>
   <strong>Name:</strong>
-  <span id="entity-info" data-id="<%= @entity.id %>" data-family="<%= @family_tree %>"></span>
+  <span id="entity-info" 
+  	data-id="<%= @entity.id %>" 
+  	data-family="<%= @family_tree %>"
+  	data-relationships="<%= @relationships %>">
+  </span>
   <%= @entity.name %>
   <%= @entity_data %>
 </p>
