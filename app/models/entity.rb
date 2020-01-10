@@ -5,11 +5,23 @@ class Entity < ApplicationRecord
   has_many :ownerships_as_subsidiary, :foreign_key => "subsidiary_id", :class_name => "Ownership"
   has_many :parents, :through => :ownerships_as_subsidiary
 
-  def family_tree
+  def family
     subsidiaries = self.subsidiaries.where.not(id: self.id)
     parents = self.parents #includes self
     family = subsidiaries + parents
-    family.map { |diary| { key: diary.id, name: diary.name } }.to_json
+  end
+
+  def family_ids
+    family = self.family
+    family.map(&:id)
+  end
+
+  def family_tree
+    self.family.map { |diary| { key: diary.id, name: diary.name } }.to_json
+  end
+
+  def family_relationships
+    Ownership.where(parent_id: self.family_ids, subsidiary_id: self.family_ids)
   end
 
   def relationships
