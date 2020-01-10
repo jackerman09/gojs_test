@@ -16,15 +16,17 @@ $(document).ready(function(){
       }
     );
 
-  // myDiagram.linkTemplate =
-  //   $$(go.Link,
-  //     {
-  //       routing: go.Link.Orthogonal, corner: 5,
-  //       relinkableFrom: true, relinkableTo: true
-  //     },
-  //     $$(go.Shape, { stroke: "gray", strokeWidth: 2 }),
-  //     $$(go.Shape, { stroke: "gray", fill: "gray", toArrow: "Standard" })
-  //   );
+  myDiagram.nodeTemplate =
+    $$(go.Node, "Auto",
+      // { background: "#44CCFF" },
+      $$(go.Shape, "RoundedRectangle",
+        { fill: "brown" }
+      ),
+      $$(go.TextBlock, "Default Text",
+        { margin: 12, stroke: "white", font: "bold 16px sans-serif" },
+        new go.Binding("text", "name")
+      )
+    );
 
   myDiagram.linkTemplate =
     $$(go.Link,
