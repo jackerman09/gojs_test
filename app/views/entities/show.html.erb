@@ -22,7 +22,7 @@
 		<% if @entity.parents.count == 0 %>
 			<tr><td>No parents</td></tr>
 		<% else %>
-			<% @entity.parents.each do |parent| %>
+			<% @entity.parents.where.not(id: @entity.id).each do |parent| %>
 				<tr>
 					<td><%= parent.name %></td>
 		      <td><%= parent.description %></td>
@@ -41,7 +41,7 @@
 		<% if @entity.subsidiaries.count == 0 %>
 			<tr><td>No subsidiaries</td></tr>
 		<% else %>
-			<% @entity.subsidiaries.each do |sub| %>
+			<% @entity.subsidiaries.where.not(id: @entity.id).each do |sub| %>
 				<tr>
 					<td><%= sub.name %></td>
 		      <td><%= sub.description %></td>

@@ -20,4 +20,10 @@ class Entity < ApplicationRecord
       |diary| { from: diary.parent_id, to: diary.subsidiary_id, ownership: diary.ownership_percentage }
     }.to_json
   end
+
+  def extended_family_tree
+  end
+
+  def extended_relationships
+  end
 end
