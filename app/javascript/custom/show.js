@@ -16,14 +16,25 @@ $(document).ready(function(){
       }
     );
 
+  // myDiagram.linkTemplate =
+  //   $$(go.Link,
+  //     {
+  //       routing: go.Link.Orthogonal, corner: 5,
+  //       relinkableFrom: true, relinkableTo: true
+  //     },
+  //     $$(go.Shape, { stroke: "gray", strokeWidth: 2 }),
+  //     $$(go.Shape, { stroke: "gray", fill: "gray", toArrow: "Standard" })
+  //   );
+
   myDiagram.linkTemplate =
     $$(go.Link,
-      {
-        routing: go.Link.Orthogonal, corner: 5,
-        relinkableFrom: true, relinkableTo: true
-      },
-      $$(go.Shape, { stroke: "gray", strokeWidth: 2 }),
-      $$(go.Shape, { stroke: "gray", fill: "gray", toArrow: "Standard" })
+      { routing: go.Link.Orthogonal, corner: 5 },
+      $$(go.Shape, { strokeWidth: 3, stroke: "#555" }),
+      $$(go.Panel, "Auto",  // this whole Panel is a link label
+        $$(go.Shape, "RoundedRectangle", { fill: "lightgray", stroke: "gray" }),
+        $$(go.TextBlock, { margin: 3 },
+          new go.Binding("text", "ownership"))
+      )
     );
 
   family_tree = $('#entity-info').data('family')
