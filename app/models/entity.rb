@@ -6,9 +6,10 @@ class Entity < ApplicationRecord
   has_many :parents, :through => :ownerships_as_subsidiary
 
   def family
+    me = [self]
     subsidiaries = self.subsidiaries.where.not(id: self.id)
-    parents = self.parents #includes self
-    family = subsidiaries + parents
+    parents = self.parents.where.not(id: self.id)
+    family = subsidiaries + parents + me
   end
 
   def family_ids
