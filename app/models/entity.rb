@@ -21,9 +21,9 @@ class Entity < ApplicationRecord
     self.family.map { |diary| { key: diary.id, name: diary.name } }.to_json
   end
 
-  def family_relationships
-    Ownership.where(parent_id: self.family_ids, subsidiary_id: self.family_ids)
-  end
+  # def family_relationships
+  #   Ownership.where(parent_id: self.family_ids, subsidiary_id: self.family_ids)
+  # end
 
   def relationships
     subsidiary_relationships = self.ownerships_as_parent.where.not(subsidiary_id: self.id)

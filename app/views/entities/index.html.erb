@@ -2,6 +2,11 @@
 
 <h1>Entities</h1>
 
+<span id="entity-info" 
+  data-family="<%= @family_tree %>"
+  data-relationships="<%= @relationships %>">
+</span>
+
 <table>
   <thead>
     <tr>
@@ -29,5 +34,8 @@
 </table>
 
 <br>
+
+<div id="myDiagramDiv" style="width:800px; height: 500px; background-color: #DAE4E4;"></div>
+<div id="mySavedModel"></div>
 
 <%= link_to 'New Entity', new_entity_path %>

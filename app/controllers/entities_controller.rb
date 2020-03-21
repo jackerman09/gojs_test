@@ -5,6 +5,8 @@ class EntitiesController < ApplicationController
   # GET /entities.json
   def index
     @entities = Entity.all
+    @family_tree = Entity.all.map { |diary| { key: diary.id, name: diary.name } }.to_json
+    @relationships = Ownership.all.map { |diary| { from: diary.parent_id, to: diary.subsidiary_id, ownership: diary.ownership_percentage } }.to_json
   end
 
   # GET /entities/1
